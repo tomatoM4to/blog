@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Jua } from "next/font/google";
+import { Sidebar } from "@/components/sidebar";
 
 const jua = Jua({ subsets: ["latin"], weight: ["400"] });
 
@@ -18,10 +19,15 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${jua.className}`}>
-                <Nav />
-                <main>
-                    {children}
-                </main>
+                <div className="flex">
+                    <Sidebar />
+                    <div>
+                        <Nav />
+                        <main>
+                            {children}
+                        </main>
+                    </div>
+                </div>
             </body>
         </html>
     );
