@@ -21,9 +21,9 @@ export default function RootLayout({
             <body className={`${jua.className}`}>
                 <div className="flex">
                     <Sidebar />
-                    <div>
+                    <div className="w-screen flex flex-col items-center">
                         <Nav />
-                        <main>
+                        <main className="w-1/2">
                             {children}
                         </main>
                     </div>
