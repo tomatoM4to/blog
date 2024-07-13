@@ -1,5 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { heads } from '@/components/mdx/heads';
 import { lists } from '@/components/mdx/list';
@@ -11,8 +11,8 @@ export default async function Page({
 }: {
     params: { subject: string; post: string }
 }) {
-    const filePath = path.join(process.cwd(), 'public', params.subject, params.post + '.mdx');
-    const res = await fs.readFileSync(filePath, 'utf8');
+    const filePath = path.join(process.cwd(), 'public', params.subject, `${params.post}.mdx`);
+    const res = await fs.readFile(filePath, 'utf8');
 
     return (
         <MDXRemote
