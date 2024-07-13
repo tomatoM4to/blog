@@ -4,6 +4,7 @@ import path from 'path';
 import { heads } from '@/components/mdx/heads';
 import { lists } from '@/components/mdx/list';
 import { highlights } from '@/components/mdx/highlights';
+import { code } from '@/components/mdx/code';
 
 export default async function Page({
     params
@@ -20,6 +21,7 @@ export default async function Page({
                 ...heads,
                 ...lists,
                 ...highlights,
+                ...code,
             }}
         />
     )
