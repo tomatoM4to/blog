@@ -19,4 +19,9 @@ export const highlights = {
     G,
     B,
     U,
+    hr: (props: any) => (
+        <hr {...props} className="border-t-4 border-gray-300 mt-10 mb-10">
+            {props.children}
+        </hr>
+    ),
 }

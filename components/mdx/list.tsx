@@ -1,6 +1,6 @@
 export const lists = {
     ul: (props: any) => (
-        <ul {...props} className="list-disc">
+        <ul {...props} className="list-disc ml-4">
             {props.children}
         </ul>
     ),

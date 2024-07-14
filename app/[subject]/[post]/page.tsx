@@ -15,14 +15,13 @@ export async function generateStaticParams() {
     for (let dir of dirList) {
         let fileList = await fs.readdir(`${root}/${dir}`);
         for (let file of fileList) {
-            const { name } = path.parse(file);
+            let newFile = file.replace('.mdx', '');
             params.push({
                 subject: dir,
-                post: name
+                post: encodeURI(newFile)
             })
         }
     }
-
     return params;
 }
 
@@ -33,7 +32,7 @@ export default async function Page({
 }: {
     params: { subject: string; post: string }
 }) {
-    const filePath = path.join(process.cwd(), 'public', params.subject, `${params.post}.mdx`);
+    const filePath = path.join(process.cwd(), 'public', params.subject, `${decodeURI(params.post)}.mdx`);
     try {
         const res = await fs.readFile(filePath, 'utf8');
 
