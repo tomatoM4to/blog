@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { heads } from '@/components/mdx/heads';
 import { lists } from '@/components/mdx/list';
+import { table } from '@/components/mdx/table';
 import { highlights } from '@/components/mdx/highlights';
 import { code } from '@/components/mdx/code';
 import { notFound } from 'next/navigation';
@@ -44,6 +45,7 @@ export default async function Page({
                     ...lists,
                     ...highlights,
                     ...code,
+                    ...table
                 }}
             />
         )

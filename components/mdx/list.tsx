@@ -5,7 +5,7 @@ export const lists = {
         </ul>
     ),
     ol: (props: any) => (
-        <ol {...props} className="list-decimal">
+        <ol {...props} className="list-decimal ml-4">
             {props.children}
         </ol>
     ),
