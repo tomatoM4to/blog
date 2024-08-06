@@ -5,6 +5,7 @@ export default function Layout({
 }: {
     children: React.ReactNode
 }) {
+    console.log('레이아웃');
     return (
         <div className="flex">
             <div className="w-96 flex flex-col text-4xl gap-10 overflow-auto">

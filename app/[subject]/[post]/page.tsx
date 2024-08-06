@@ -36,7 +36,7 @@ export default async function Page({
     const filePath = path.join(process.cwd(), 'public', params.subject, `${decodeURI(params.post)}.mdx`);
     try {
         const res = await fs.readFile(filePath, 'utf8');
-
+        console.log(`리렌더 페이지`);
         return (
             <div className="flex-1 flex flex-col items-center bg-blue-300">
                 <div className="w-1/2">
