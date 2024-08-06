@@ -19,14 +19,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${jua.className}`}>
-                <div className="flex">
-                    <Sidebar />
-                    <div className="w-screen flex flex-col items-center">
-                        <Nav />
-                        <main className="w-1/2">
-                            {children}
-                        </main>
-                    </div>
+                <div className="grid grid-cols-[24rem_1fr] auto-rows-auto">
+                    <Sidebar tailwind="w-96 p-7 bg-yellow-200" />
+                    <Nav tailwind="flex items-center h-14 ml-6 mr-auto text-2xl mb-20 bg-red-200" />
+                    <main className="col-span-2 bg-red-300">
+                        {children}
+                    </main>
                 </div>
             </body>
         </html>

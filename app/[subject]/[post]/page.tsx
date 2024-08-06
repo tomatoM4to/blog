@@ -38,16 +38,20 @@ export default async function Page({
         const res = await fs.readFile(filePath, 'utf8');
 
         return (
-            <MDXRemote
-                source={res}
-                components={{
-                    ...heads,
-                    ...lists,
-                    ...highlights,
-                    ...code,
-                    ...table
-                }}
-            />
+            <div className="flex-1 flex flex-col items-center bg-blue-300">
+                <div className="w-1/2">
+                    <MDXRemote
+                        source={res}
+                        components={{
+                            ...heads,
+                            ...lists,
+                            ...highlights,
+                            ...code,
+                            ...table
+                        }}
+                    />
+                </div>
+            </div>
         )
     }
     catch (e) {

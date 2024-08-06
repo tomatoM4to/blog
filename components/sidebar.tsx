@@ -5,9 +5,9 @@ import { VscSparkle } from "react-icons/vsc";
 import { VscTerminalLinux } from "react-icons/vsc";
 import { VscGithubInverted } from "react-icons/vsc";
 
-export function Sidebar() {
+export function Sidebar({ tailwind }: { tailwind: string }) {
     return (
-        <aside className="w-96 h-screen overflow-auto p-7">
+        <aside className={tailwind}>
             <p className="text-xs">빠른 이동</p>
             <div className="flex flex-col border-b-2 border-gray-300">
                 <Button icon={<VscSparkle />} title="소개" count={-1} />
