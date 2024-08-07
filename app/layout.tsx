@@ -20,8 +20,8 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${jua.className}`}>
                 <div className="grid grid-cols-[24rem_1fr] auto-rows-auto">
-                    <Sidebar tailwind="w-96 p-7 bg-yellow-200" />
-                    <Nav tailwind="flex items-center h-14 ml-6 mr-auto text-2xl mb-20 bg-red-200" />
+                    <Sidebar tailwind="w-96 p-7 bg-yellow-200 fixed" />
+                    <Nav tailwind="flex items-center h-14 ml-6 mr-auto text-2xl mb-20 bg-red-200 fixed ml-96" />
                     <main className="col-span-2 bg-red-300">
                         {children}
                     </main>

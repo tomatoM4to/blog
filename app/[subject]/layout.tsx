@@ -8,7 +8,7 @@ export default function Layout({
     console.log('레이아웃');
     return (
         <div className="flex">
-            <div className="w-96 flex flex-col text-4xl gap-10 overflow-auto">
+            <div className="w-96 mt-72 flex flex-col text-4xl gap-10 overflow-auto fixed">
                 <Link href="/os/[1]메모리 개요">메모리 개요</Link>
                 <Link href="/os/[2]메모리 할당">메모리 할당</Link>
                 <Link href="/os/[3]가상 메모리">가상 메모리</Link>
