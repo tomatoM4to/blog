@@ -38,7 +38,7 @@ export default async function Page({
         const res = await fs.readFile(filePath, 'utf8');
         console.log(`리렌더 페이지`);
         return (
-            <div className="ml-96 mt-32 flex-1 flex flex-col items-center bg-blue-300">
+            <div className="ml-96 mt-32 flex-1 flex flex-col items-center">
                 <div className="w-1/2">
                     <MDXRemote
                         source={res}
