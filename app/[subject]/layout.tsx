@@ -1,21 +1,66 @@
 import Link from 'next/link';
+import fs from 'fs/promises';
+import path from 'path';
+import { notFound } from 'next/navigation';
+import { MiniTitle } from '@/components/miniTitle';
 
-export default function Layout({
-    children
+export async function generateStaticParams() {
+    let params = [];
+    let root = path.join(process.cwd(), 'public');
+    let dirList = await fs.readdir(root);
+
+    for (let dir of dirList) {
+        params.push({
+            subject: dir
+        })
+    }
+    return params;
+}
+
+export default async function Layout({
+    children,
+    params
 }: {
-    children: React.ReactNode
+    children: React.ReactNode,
+    params: { subject: string }
 }) {
-    return (
-        <div className="flex">
-            <div className="w-96 mt-72 flex flex-col text-4xl gap-10 overflow-auto fixed">
-                <Link href="/os/[1]메모리 개요">메모리 개요</Link>
-                <Link href="/os/[2]메모리 할당">메모리 할당</Link>
-                <Link href="/os/[3]가상 메모리">가상 메모리</Link>
-                <Link href="/os/[4]페이징1">페이징1</Link>
-                <Link href="/os/[5]페이징2">페이징2</Link>
-                <Link href="/os/디스크 시스템">디스크 시스템</Link>
+    const filePath = path.join(process.cwd(), 'public', params.subject);
+    try {
+        let res = await fs.readdir(filePath);
+        return (
+            <div className="flex">
+                <div className="w-96 mt-52 p-7 flex flex-col fixed">
+                    <MiniTitle title="포스팅" />
+                    {
+                        res && res.map(file => {
+                            let { name } = path.parse(file);
+                            name = name.replace('[', '');
+                            name = name.replace(']', '#');
+                            return name;
+                        })
+                            .map(file => {
+                                let [idx, name] = file.split('#');
+                                return (
+                                    name &&
+                                    name !== 'img' &&
+                                    <Link
+                                        href={`/${params.subject}/[${idx}]${name}`}
+                                        key={idx}
+                                        className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                    >
+                                        {idx}. {name}
+                                    </Link>
+                                )
+                            })
+                    }
+                </div>
+                {children}
             </div>
-            {children}
-        </div>
-    );
+        );
+    }
+    catch (e) {
+        // @ts-ignore
+        console.log(`layout error: ${e.message}`);
+        notFound();
+    }
 }

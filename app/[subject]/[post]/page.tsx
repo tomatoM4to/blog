@@ -54,6 +54,8 @@ export default async function Page({
         )
     }
     catch (e) {
+        // @ts-ignore
+        console.log(`page error: ${e.message}`);
         notFound();
     }
 }
