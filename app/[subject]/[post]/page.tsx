@@ -1,4 +1,4 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { compileMDX } from 'next-mdx-remote/rsc';
 import fs from 'fs/promises';
 import path from 'path';
 import { heads } from '@/components/mdx/heads';
@@ -7,6 +7,29 @@ import { table } from '@/components/mdx/table';
 import { highlights } from '@/components/mdx/highlights';
 import { code } from '@/components/mdx/code';
 import { notFound } from 'next/navigation';
+import remarkGfm from "remark-gfm";
+
+async function getContent(subject: string, post: string) {
+    let filePath = path.join(process.cwd(), 'public', subject, `${decodeURI(post)}.mdx`);
+    let source = await fs.readFile(filePath, 'utf8');
+
+    let { content } = await compileMDX({
+        source,
+        options: {
+            mdxOptions: {
+                remarkPlugins: [remarkGfm]
+            }
+        },
+        components: {
+            ...heads,
+            ...lists,
+            ...table,
+            ...highlights,
+            ...code
+        }
+    })
+    return content;
+}
 
 export async function generateStaticParams() {
     let params = [];
@@ -33,22 +56,12 @@ export default async function Page({
 }: {
     params: { subject: string; post: string }
 }) {
-    const filePath = path.join(process.cwd(), 'public', params.subject, `${decodeURI(params.post)}.mdx`);
     try {
-        const res = await fs.readFile(filePath, 'utf8');
+        let content = await getContent(params.subject, params.post);
         return (
             <div className="ml-96 mt-32 flex-1 flex flex-col items-center">
                 <div className="w-1/2">
-                    <MDXRemote
-                        source={res}
-                        components={{
-                            ...heads,
-                            ...lists,
-                            ...highlights,
-                            ...code,
-                            ...table
-                        }}
-                    />
+                    {content}
                 </div>
             </div>
         )
