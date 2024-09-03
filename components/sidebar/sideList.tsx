@@ -16,21 +16,16 @@ export function SideList({
             {
                 res && res.map(file => {
                     let { name } = path.parse(file);
-                    name = name.replace('[', '');
-                    name = name.replace(']', '#');
                     return name;
                 })
-                    .map(file => {
-                        let [idx, name] = file.split('#');
+                    .map((file, idx) => {
                         return (
-                            name &&
-                            name !== 'img' &&
                             <Link
-                                href={`/${params.subject}/[${idx}]${name}`}
+                                href={`/${params.subject}/${file}`}
                                 key={idx}
                                 className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
                             >
-                                {idx}. {name}
+                                {idx}. {file}
                             </Link>
                         )
                     })
