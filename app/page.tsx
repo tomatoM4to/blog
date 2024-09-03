@@ -10,8 +10,8 @@ export default function Home() {
         <div className="mt-32 flex w-full">
             <Dummy />
             <div className="flex-1 flex flex-col items-center">
-                <Link href="/os/[1]메모리 개요">os</Link>
-                <Link href="/network/OSI7">network</Link>
+                <Link href="/os/1-Memory-overview">os</Link>
+                <Link href="/network/1-Internet-And-Protocol">network</Link>
             </div>
         </div>
     );

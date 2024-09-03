@@ -19,13 +19,16 @@ export function SideList({
                     return name;
                 })
                     .map((file, idx) => {
+                        let newFileList = file.split('-');
+                        newFileList.shift();
                         return (
+                            newFileList.length &&
                             <Link
                                 href={`/${params.subject}/${file}`}
                                 key={idx}
                                 className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
                             >
-                                {idx}. {file}
+                                {idx + 1}. {newFileList.join(' ')}
                             </Link>
                         )
                     })
