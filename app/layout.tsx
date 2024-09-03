@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Jua } from "next/font/google";
-import { Sidebar } from "@/components/sidebar";
+import { Sidebar } from "@/components/sidebar/sidebar";
 
 const jua = Jua({ subsets: ["latin"], weight: ["400"] });
 
@@ -20,8 +20,8 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${jua.className}`}>
                 <div className="grid grid-cols-[24rem_1fr] auto-rows-auto">
-                    <Sidebar tailwind="w-96 p-7 fixed" />
-                    <Nav tailwind="flex items-center h-14 ml-6 mr-auto text-2xl mb-20 fixed ml-96" />
+                    <Sidebar />
+                    <Nav />
                     <main className="col-span-2">
                         {children}
                     </main>

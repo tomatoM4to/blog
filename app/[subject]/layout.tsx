@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import { MiniTitle } from '@/components/miniTitle';
+import { SideList } from '@/components/sidebar/sideList';
 
 export async function generateStaticParams() {
     let params = [];
@@ -29,31 +30,7 @@ export default async function Layout({
         let res = await fs.readdir(filePath);
         return (
             <div className="flex">
-                <div className="w-96 mt-52 p-7 flex flex-col fixed">
-                    <MiniTitle title="포스팅" />
-                    {
-                        res && res.map(file => {
-                            let { name } = path.parse(file);
-                            name = name.replace('[', '');
-                            name = name.replace(']', '#');
-                            return name;
-                        })
-                            .map(file => {
-                                let [idx, name] = file.split('#');
-                                return (
-                                    name &&
-                                    name !== 'img' &&
-                                    <Link
-                                        href={`/${params.subject}/[${idx}]${name}`}
-                                        key={idx}
-                                        className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
-                                    >
-                                        {idx}. {name}
-                                    </Link>
-                                )
-                            })
-                    }
-                </div>
+                <SideList res={res} params={params} />
                 {children}
             </div>
         );

@@ -8,6 +8,7 @@ import { highlights } from '@/components/mdx/highlights';
 import { code } from '@/components/mdx/code';
 import { notFound } from 'next/navigation';
 import remarkGfm from "remark-gfm";
+import { postPage, post } from '@/components/responsiveConfig';
 
 async function getContent(subject: string, post: string) {
     let filePath = path.join(process.cwd(), 'public', subject, `${decodeURI(post)}.mdx`);
@@ -59,8 +60,8 @@ export default async function Page({
     try {
         let content = await getContent(params.subject, params.post);
         return (
-            <div className="ml-96 mt-32 flex-1 flex flex-col items-center">
-                <div className="w-1/2">
+            <div className={`${postPage} mt-32 flex-1 flex flex-col items-center`}>
+                <div className={`${post}`}>
                     {content}
                 </div>
             </div>

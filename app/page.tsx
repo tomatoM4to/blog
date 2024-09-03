@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { mainPage } from "@/components/responsiveConfig";
 
 function Dummy() {
-    return <div className="w-96"></div>;
+    return <div className={`${mainPage}`}></div>;
 }
 
 export default function Home() {

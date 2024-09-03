@@ -4,11 +4,13 @@ import { VscSourceControl } from "react-icons/vsc";
 import { VscSparkle } from "react-icons/vsc";
 import { VscTerminalLinux } from "react-icons/vsc";
 import { VscGithubInverted } from "react-icons/vsc";
-import { MiniTitle } from "./miniTitle";
+import { MiniTitle } from "@/components/miniTitle";
+import { sidebar } from "@/components/responsiveConfig";
 
-export function Sidebar({ tailwind }: { tailwind: string }) {
+
+export function Sidebar() {
     return (
-        <aside className={tailwind}>
+        <aside className={`${sidebar} p-7 fixed`}>
             <MiniTitle title="메인메뉴" />
             <div className="flex flex-col border-b-2 border-gray-300">
                 <Button icon={<VscSparkle />} title="소개" count={-1} />
