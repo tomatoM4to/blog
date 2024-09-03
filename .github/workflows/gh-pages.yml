@@ -1,13 +1,41 @@
-name: Build Next.js Web application
-on: push
+name: Deploy
+
+# code from https://blex.me/@baealex/nextjs%EB%A5%BC-github-action%EC%9C%BC%EB%A1%9C-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
 jobs:
-  build-project:
-    name: Build project
+  deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
-      - name: Build project
-        run: npm run build
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install
+      run: npm ci  # 의존성 설치
+
+    - name: Build
+      run: npm run build
+
+    - run: touch out/.nojekyll  # GitHub Pages에서 Jekyll 처리를 방지하기 위해 .nojekyll 파일 생성
+
+    - name: Deploy (Client)
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # 배포될 브랜치
+        folder: out  # 배포할 폴더
+        clean: true  # 배포 전에 기존 파일을 삭제
