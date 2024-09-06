@@ -4,6 +4,7 @@ import path from 'path';
 import { notFound } from 'next/navigation';
 import { MiniTitle } from '@/components/miniTitle';
 import { SideList } from '@/components/sidebar/sideList';
+import { SideMenu } from '@/components/sideMenu/menu';
 
 export async function generateStaticParams() {
     let params = [];
@@ -30,6 +31,7 @@ export default async function Layout({
         let res = await fs.readdir(filePath);
         return (
             <div className="flex">
+                <SideMenu res={res} params={params} />
                 <SideList res={res} params={params} />
                 {children}
             </div>

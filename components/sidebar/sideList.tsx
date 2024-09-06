@@ -22,7 +22,7 @@ export function SideList({
                         let newFileList = file.split('-');
                         newFileList.shift();
                         return (
-                            newFileList.length &&
+                            newFileList.length !== 0 &&
                             <Link
                                 href={`/${params.subject}/${file}`}
                                 key={idx}
