@@ -23,8 +23,23 @@ export function MenuList({
 }) {
     return (
         <div
-            className={`fixed top-0 right-0 flex flex-col px-5 h-full w-7/12 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
+            className={`
+                fixed
+                top-0
+                right-0
+                flex
+                flex-col
+                px-5
+                h-full
+                w-7/12
+                bg-white
+                shadow-lg
+                transform
+                transition-transform
+                duration-300
+                ease-in-out
+                ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+                `}
             style={{ zIndex: 10 }}
         >
             <MiniTitle title="메인메뉴" className="mt-12" />
@@ -37,26 +52,28 @@ export function MenuList({
             </div>
 
             <MiniTitle title="목차" className="mt-2" />
-            {
-                res && res.map(file => {
-                    let { name } = path.parse(file);
-                    return name;
-                })
-                    .map((file, idx) => {
-                        let newFileList = file.split('-');
-                        newFileList.shift();
-                        return (
-                            newFileList.length !== 0 &&
-                            <Link
-                                href={`/${params.subject}/${file}`}
-                                key={idx}
-                                className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
-                            >
-                                {idx + 1}. {newFileList.join(' ')}
-                            </Link>
-                        )
+            <div className="pb-5 flex flex-col overflow-y-auto overscroll-contain">
+                {
+                    res && res.map(file => {
+                        let { name } = path.parse(file);
+                        return name;
                     })
-            }
+                        .map((file, idx) => {
+                            let newFileList = file.split('-');
+                            newFileList.shift();
+                            return (
+                                newFileList.length !== 0 &&
+                                <Link
+                                    href={`/${params.subject}/${file}`}
+                                    key={idx}
+                                    className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                >
+                                    {idx + 1}. {newFileList.join(' ')}
+                                </Link>
+                            )
+                        })
+                }
+            </div>
         </div>
     )
 }
