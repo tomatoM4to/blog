@@ -27,7 +27,7 @@ export function MenuButton({
             p-2
             hover:bg-gray-200
             transition-all"
-            style={{ zIndex: 100 }}
+            style={{ zIndex: 15 }}
         >
             <span
                 className={`${tailwind} ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}

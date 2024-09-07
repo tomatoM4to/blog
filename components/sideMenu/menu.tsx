@@ -4,7 +4,13 @@ import { MenuButton } from "./menuButton"
 import { useState } from "react"
 import { MenuList } from "./menuList";
 import { sideMenu } from "@/components/responsiveConfig";
+import { Background } from "./background";
 
+/*
+Background -> z-index: 5
+MenuList -> z-index: 10
+MenuButton -> z-index: 15
+*/
 export function SideMenu({
     res,
     params
@@ -16,7 +22,8 @@ export function SideMenu({
     return (
         <div className={`${sideMenu}`}>
             <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
-            <MenuList isOpen={isOpen} res={res} params={params} />
+            <MenuList isOpen={isOpen} setIsOpen={setIsOpen} res={res} params={params} />
+            <Background isOpen={isOpen} setIsOpen={setIsOpen} />
         </ div>
     )
 }

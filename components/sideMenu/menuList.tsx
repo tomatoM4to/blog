@@ -3,21 +3,21 @@
 import { MiniTitle } from "@/components/miniTitle";
 import Link from 'next/link';
 import path from 'path';
-import { sideList } from "@/components/responsiveConfig";
 import { Button } from "@/components/button";
 import { VscCode } from "react-icons/vsc";
 import { VscSourceControl } from "react-icons/vsc";
 import { VscSparkle } from "react-icons/vsc";
 import { VscTerminalLinux } from "react-icons/vsc";
 import { VscGithubInverted } from "react-icons/vsc";
-import { sidebar } from "@/components/responsiveConfig";
 
 export function MenuList({
     isOpen,
+    setIsOpen,
     res,
     params
 }: {
     isOpen: boolean,
+    setIsOpen: Function,
     res: string[],
     params: { subject: string }
 }) {
@@ -67,6 +67,7 @@ export function MenuList({
                                     href={`/${params.subject}/${file}`}
                                     key={idx}
                                     className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     {idx + 1}. {newFileList.join(' ')}
                                 </Link>

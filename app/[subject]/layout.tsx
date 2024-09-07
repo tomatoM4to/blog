@@ -1,8 +1,6 @@
-import Link from 'next/link';
 import fs from 'fs/promises';
 import path from 'path';
 import { notFound } from 'next/navigation';
-import { MiniTitle } from '@/components/miniTitle';
 import { SideList } from '@/components/sidebar/sideList';
 import { SideMenu } from '@/components/sideMenu/menu';
 
