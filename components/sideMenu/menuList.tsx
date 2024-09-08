@@ -20,94 +20,91 @@ function PostList({
     setIsOpen: Function
 }) {
     return (
-        <div>
-            <MiniTitle title="목차" className="mt-2" />
-            <div className="pb-5 flex flex-col overflow-y-auto overscroll-contain">
-                {
-                    res && res.map(file => {
-                        let { name } = path.parse(file);
-                        return name;
+        <div className="pb-5 flex flex-col overflow-y-auto overscroll-contain">
+            {
+                res && res.map(file => {
+                    let { name } = path.parse(file);
+                    return name;
+                })
+                    .map((file, idx) => {
+                        let newFileList = file.split('-');
+                        newFileList.shift();
+                        return (
+                            newFileList.length !== 0 &&
+                            <Link
+                                href={`/${params.subject}/${file}`}
+                                key={idx}
+                                className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {idx + 1}. {newFileList.join(' ')}
+                            </Link>
+                        )
                     })
-                        .map((file, idx) => {
-                            let newFileList = file.split('-');
-                            newFileList.shift();
-                            return (
-                                newFileList.length !== 0 &&
-                                <Link
-                                    href={`/${params.subject}/${file}`}
-                                    key={idx}
-                                    className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {idx + 1}. {newFileList.join(' ')}
-                                </Link>
-                            )
-                        })
-                }
-                {
-                    res && res.map(file => {
-                        let { name } = path.parse(file);
-                        return name;
+            }
+            {
+                res && res.map(file => {
+                    let { name } = path.parse(file);
+                    return name;
+                })
+                    .map((file, idx) => {
+                        let newFileList = file.split('-');
+                        newFileList.shift();
+                        return (
+                            newFileList.length !== 0 &&
+                            <Link
+                                href={`/${params.subject}/${file}`}
+                                key={idx}
+                                className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {idx + 1}. {newFileList.join(' ')}
+                            </Link>
+                        )
                     })
-                        .map((file, idx) => {
-                            let newFileList = file.split('-');
-                            newFileList.shift();
-                            return (
-                                newFileList.length !== 0 &&
-                                <Link
-                                    href={`/${params.subject}/${file}`}
-                                    key={idx}
-                                    className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {idx + 1}. {newFileList.join(' ')}
-                                </Link>
-                            )
-                        })
-                }
-                {
-                    res && res.map(file => {
-                        let { name } = path.parse(file);
-                        return name;
+            }
+            {
+                res && res.map(file => {
+                    let { name } = path.parse(file);
+                    return name;
+                })
+                    .map((file, idx) => {
+                        let newFileList = file.split('-');
+                        newFileList.shift();
+                        return (
+                            newFileList.length !== 0 &&
+                            <Link
+                                href={`/${params.subject}/${file}`}
+                                key={idx}
+                                className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {idx + 1}. {newFileList.join(' ')}
+                            </Link>
+                        )
                     })
-                        .map((file, idx) => {
-                            let newFileList = file.split('-');
-                            newFileList.shift();
-                            return (
-                                newFileList.length !== 0 &&
-                                <Link
-                                    href={`/${params.subject}/${file}`}
-                                    key={idx}
-                                    className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {idx + 1}. {newFileList.join(' ')}
-                                </Link>
-                            )
-                        })
-                }
-                {
-                    res && res.map(file => {
-                        let { name } = path.parse(file);
-                        return name;
+            }
+            {
+                res && res.map(file => {
+                    let { name } = path.parse(file);
+                    return name;
+                })
+                    .map((file, idx) => {
+                        let newFileList = file.split('-');
+                        newFileList.shift();
+                        return (
+                            newFileList.length !== 0 &&
+                            <Link
+                                href={`/${params.subject}/${file}`}
+                                key={idx}
+                                className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {idx + 1}. {newFileList.join(' ')}
+                            </Link>
+                        )
                     })
-                        .map((file, idx) => {
-                            let newFileList = file.split('-');
-                            newFileList.shift();
-                            return (
-                                newFileList.length !== 0 &&
-                                <Link
-                                    href={`/${params.subject}/${file}`}
-                                    key={idx}
-                                    className="px-2 py-1 mb-1 hover:bg-gray-300 transition-colors rounded-lg"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {idx + 1}. {newFileList.join(' ')}
-                                </Link>
-                            )
-                        })
-                }
-            </div>
+            }
         </div>
     )
 }
@@ -153,9 +150,17 @@ export function MenuList({
                 <Button icon={<VscGithubInverted />} title="깃헙" count={0} />
             </div>
 
-            {res && params && (
-                <PostList res={res} params={params} setIsOpen={setIsOpen} />
-            )}
+            {
+                res && params && (
+                    <MiniTitle title="목차" className="mt-2" />
+                )
+            }
+
+            {
+                res && params && (
+                    <PostList res={res} params={params} setIsOpen={setIsOpen} />
+                )
+            }
         </div>
     )
 }
