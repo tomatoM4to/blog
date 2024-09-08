@@ -15,8 +15,8 @@ export function SideMenu({
     res,
     params
 }: {
-    res: string[],
-    params: { subject: string }
+    res?: string[],
+    params?: { subject: string }
 }) {
     const [isOpen, setIsOpen] = useState(false);
     return (
