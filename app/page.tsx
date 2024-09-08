@@ -14,6 +14,8 @@ export default function Home() {
             <div className="flex-1 flex flex-col items-center">
                 <Link href="/os/1-Memory-overview">os</Link>
                 <Link href="/network/1-Internet-And-Protocol">network</Link>
+                <Link href="/ai/1-AI-overview">ai</Link>
+                <Link href="/database/1-Database-overview">database</Link>
             </div>
         </div>
     );
