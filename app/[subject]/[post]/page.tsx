@@ -22,11 +22,11 @@ async function getContent(subject: string, post: string) {
             }
         },
         components: {
-            ...heads,
-            ...lists,
-            ...table,
+            // ...heads,
+            // ...lists,
+            // ...table,
             ...highlights,
-            ...code
+            // ...code
         }
     })
     return content;
