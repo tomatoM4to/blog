@@ -62,17 +62,13 @@ Process 가 도착하면 각 분할된 partition중 적당한 공간에 적재�
 #### 자료구조
 Fixed partition Multi programming 을 구현하려면 이러한 구조로 자료구조를 먼저 생각하면 된다.
 
-<Table
-    head={["partition", "start address", "size", "current Process ID", "other fields"]}
-    body={[
-        ["partition-a", "a1", "10MB", "---", "..."],
-        ["partition-b", "a2", "10MB", "---", "..."],
-        ["partition-c", "a3", "20MB", "Pid1", "..."],
-        ["partition-d", "a4", "30MB", "Pid2", "..."],
-        ["partition-e", "a5", "50MB", "Pid3", "..."],
-    ]}
-/>
-
+| partition | start address | size | current Process ID | other fields |
+|-----------|---------------|------|--------------------|--------------|
+| partition-a | a1 | 10MB | --- | ... |
+| partition-b | a2 | 10MB | --- | ... |
+| partition-c | a3 | 20MB | Pid1 | ... |
+| partition-d | a4 | 30MB | Pid2 | ... |
+| partition-e | a5 | 50MB | Pid3 | ... |
 
 #### 커널 및 사용자 영역 보호
 Kernel 뿐만 아니라 각 partition 도 보호해야 한다, 각 partition 마다 Boundary register을 두어 해결할수 있다.
@@ -102,50 +98,39 @@ Kernel 뿐만 아니라 각 partition 도 보호해야 한다, 각 partition 마
 
 ![Continuous Memory Allocation](./img/Memory-Allocation/Variable-Partition.png)
 
-<Table
-    head={["partition", "start address", "size", "current Process ID", "other fields"]}
-    body={[
-        ["partition-1", "u", "120MB", "---", "..."],
-    ]}
-/>
 
-<Table
-    head={["partition", "start address", "size", "current Process ID", "other fields"]}
-    body={[
-        ["partition-1", "u", "20MB", "A", "..."],
-        ["partition-2", "u + 20", "100MB", "---", "..."],
-    ]}
-/>
+| partition | start address | size | current Process ID | other fields |
+|-----------|---------------|------|--------------------|--------------|
+| partition-1 | u | 120MB | --- | ... |
 
-<Table
-    head={["partition", "start address", "size", "current Process ID", "other fields"]}
-    body={[
-        ["partition-1", "u", "20MB", "A", "..."],
-        ["partition-2", "u + 20", "20MB", "B", "..."],
-        ["partition-3", "u + 40", "80MB", "---", "..."],
-    ]}
-/>
 
-<Table
-    head={["partition", "start address", "size", "current Process ID", "other fields"]}
-    body={[
-        ["partition-1", "u", "20MB", "A", "..."],
-        ["partition-2", "u + 20", "20MB", "B", "..."],
-        ["partition-3", "u + 40", "40MB", "C", "..."],
-        ["partition-4", "u + 80", "40MB", "---", "..."],
-    ]}
-/>
+| partition | start address | size | current Process ID | other fields |
+|-----------|---------------|------|--------------------|--------------|
+| partition-1 | u | 20MB | A | ... |
+| partition-2 | u + 20 | 100MB | --- | ... |
 
-<Table
-    head={["partition", "start address", "size", "current Process ID", "other fields"]}
-    body={[
-        ["partition-1", "u", "20MB", "A", "..."],
-        ["partition-2", "u + 20", "20MB", "---", "..."],
-        ["partition-3", "u + 40", "40MB", "C", "..."],
-        ["partition-4", "u + 80", "40MB", "---", "..."],
-    ]}
-/>
 
+| partition | start address | size | current Process ID | other fields |
+|-----------|---------------|------|--------------------|--------------|
+| partition-1 | u | 20MB | A | ... |
+| partition-2 | u + 20 | 20MB | B | ... |
+| partition-3 | u + 40 | 80MB | --- | ... |
+
+
+| partition | start address | size | current Process ID | other fields |
+|-----------|---------------|------|--------------------|--------------|
+| partition-1 | u | 20MB | A | ... |
+| partition-2 | u + 20 | 20MB | B | ... |
+| partition-3 | u + 40 | 40MB | C | ... |
+| partition-4 | u + 80 | 40MB | --- | ... |
+
+
+| partition | start address | size | current Process ID | other fields |
+|-----------|---------------|------|--------------------|--------------|
+| partition-1 | u | 20MB | A | ... |
+| partition-2 | u + 20 | 20MB | --- | ... |
+| partition-3 | u + 40 | 40MB | C | ... |
+| partition-4 | u + 80 | 20MB | --- | ... |
 
 마지막 그림에서 만약 B가 할일을 끝내고 나갈시 **파티션이 나누어 졌으면서 아무도 안쓰는 상태**의 Memory가 생기게 된다.
 

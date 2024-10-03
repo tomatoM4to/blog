@@ -7,13 +7,10 @@
 
 첫번째 열은 각 계층의 이름을 나타내며, 두번째 열은 프로토콜, 세번째 열언 PDU를 나타넨다.
 
-<Table
-    head={['Allplication', 'Presentation', 'Session', 'Transport', 'Network', 'Data Link', 'Physical']}
-    body={[
-        ['HTTP, FTP, Telnet', 'MIDI, EBCDIC, JPEG, MPEG', 'OS', 'TCP, UDP', 'IP, ICMP, ARP, IPX', 'MAC', 'Hub, Repeater'],
-        ['Data', 'Data', 'Data', 'Segment', 'Packet', 'Frame', 'Bit']
-    ]}
-/>
+| Allplication | Presentation | Session | Transport | Network | Data Link | Physical |
+|--------------|--------------|---------|-----------|---------|-----------|----------|
+| HTTP, FTP, Telnet | MIDI, EBCDIC, JPEG, MPEG | OS | TCP, UDP | IP, ICMP, ARP, IPX | MAC | Hub, Repeater |
+| Data | Data | Data | Segment | Packet | Frame | Bit |
 
 #### 데이터 전달 방식
 러한 계층은 독립적으로 활동하고 있지만, 실제로는 서로 유기적으로 동작을 하고 있기 때문에, Stack 계층이라 표현 하기도 한다.

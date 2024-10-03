@@ -9,6 +9,7 @@ import { code } from '@/components/mdx/code';
 import { notFound } from 'next/navigation';
 import remarkGfm from "remark-gfm";
 import { postPage, post } from '@/components/responsiveConfig';
+import 'github-markdown-css/github-markdown-light.css'
 
 async function getContent(subject: string, post: string) {
     let filePath = path.join(process.cwd(), 'public', subject, `${decodeURI(post)}.mdx`);
@@ -22,9 +23,9 @@ async function getContent(subject: string, post: string) {
             }
         },
         components: {
-            ...heads,
-            ...lists,
-            ...table,
+            // ...heads,
+            // ...lists,
+            // ...table,
             ...highlights,
             ...code
         }
@@ -61,7 +62,7 @@ export default async function Page({
         let content = await getContent(params.subject, params.post);
         return (
             <div className={`${postPage} mt-32 flex-1 flex flex-col items-center`}>
-                <div className={`${post}`}>
+                <div className={`${post} markdown-body`}>
                     {content}
                 </div>
             </div>
