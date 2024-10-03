@@ -94,7 +94,7 @@ int main()
   * 프로세서가 disk 까지 가지 않기 때문
 * DRAM 을 주로 사용
   * 용량이 크고, 가격이 저렴
-* <span style="color: pink">디스크 입출력 병목현상(I/O bottleneck) 해소</span>
+* 디스크 입출력 병목현상(I/O bottleneck) 해소
   * disk는 CPU에 비해 너무 느리기 때문에 disk보다 빠른 Main memory를 중간에 배치하여 성능차를 매꿔주는 역할
 
 ![주기억장치](../img/OS/컴구/주기억장치.png)
@@ -103,7 +103,7 @@ int main()
 ## 캐시 (Cache)
 * 프로세서 내부에 있는 메모리 (L1, L2 캐시 등)
   * 속도가 빠르고 가격이 비쌈
-* <span style="color: pink">메인 메모리의 입출력 병목 현상 해소</span>
+* 메인 메모리의 입출력 병목 현상 해소
   * Main memory를 사용함으로써 성능 향상을 이뤄냈으므로 비슷한 방법으로 성능향상을 이뤄내기 위해 사용
 
 ![캐시](../img/OS/컴구/캐시.png)
@@ -132,7 +132,7 @@ int main()
   * 위 그림에선 잘 나타나있지 않지만 실제 메인메모리에서 데이터를 캐시로 가져올때는 해당 부분많이 아닌 주변까지 덩어리로 가져온다. (cache line, cache block)
 * 시간적 지역성 (Temporal locality)
   * 한번 참조한 주소를 곧 다시 참조하는 특성 <G>// ex) For문 등의 순환 문</G>
-* <span style="color: pink">지역성은 캐시 적중률(cache hit ratio)과 밀접</span>
+* 지역성은 캐시 적중률(cache hit ratio)과 밀접
   * 알고리즘 성능 향상 위한 중요한 요소 중 하나
 
 ![지역성](../img/OS/컴구/지역성.png)
