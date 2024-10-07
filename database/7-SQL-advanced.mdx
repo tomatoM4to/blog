@@ -91,3 +91,38 @@ NULL값은 비교 연산자로 비교가 불불가능하며, NULL값의 연산�
 SELECT:스칼라 부속질의: 값이 하나나와서 스칼라 서브쿼리라고 한다.
 
 보통 WHERE에만 쓰긴 함
+
+질문: [JOIN 연산은 N^2 인가?]
+JOIN 연산으 내부저거으로 보면 굉장히 오래걸리는 작업임, R JOIN S, 할때, R의 모든 키를 S에 대항시시키는 작업을 수행해야함(카티션 프로덕트?), 그래서 성능측면에서 JOIN을 서브쿼리로 대체할수 있음
+
+## 연산자
+비교, 집합, 한정, 존재
+
+어떤 연산을 사용학 위해선 서브쿼리의 Tuple, Attribute가 단일인지, 다중인지에 따라 달라짐
+
+## 스칼라 서브쿼리
+GROUP BY를 쓰면 SELECT 절에 반드시 나와야 하는데, 혹은 함수가, 근데 스칼라 서브쿼리 내부에 GROUP BY key를 써도 됌
+
+### example
+```sql
+ALTER TABLE Ordeers ADD bookname VARCHAR(40);
+UPDATE Orders
+SET bookname = (
+    SELECT bookname
+    FROM Book
+    WHERE Book.bookid = Orders.bookid);
+)
+```
+첫줄에 ALTER TABLE에 Attribute에 추가함으로써 null값들이 쭈욱 추가가 돼고 이를 스스칼라 서브쿼리로 의미있는 값으로 넣넣는 예제
+
+## Inline 서브쿼리
+FROM 절에서 상ㅇ돼는 테이블은 상대적ㅇ로 쉬바, 다상의 테이블 cs와 진짜 테이이블? od가 있는거다.
+
+가상테이블은 나중에 배배운다.
+
+참고로 가상테이이블에서 GROUP BY를 걸수 있다.
+
+***
+
+
+
