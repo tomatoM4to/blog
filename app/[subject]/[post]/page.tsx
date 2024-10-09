@@ -24,7 +24,7 @@ async function getContent(subject: string, post: string) {
         },
         components: {
             // ...heads,
-            // ...lists,
+            ...lists,
             // ...table,
             ...highlights,
             ...code
