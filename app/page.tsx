@@ -15,7 +15,7 @@ export default function Home() {
                 <Link href="/os/1-Computer-System-Overview">os</Link>
                 <Link href="/network/1-Internet-And-Protocol">network</Link>
                 <Link href="/ai/1-AI-overview">ai</Link>
-                <Link href="/database/1-Database-overview">database</Link>
+                <Link href="/database/1-Introduction">database</Link>
             </div>
         </div>
     );
