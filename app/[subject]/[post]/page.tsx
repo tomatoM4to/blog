@@ -61,7 +61,7 @@ export default async function Page({
     try {
         let content = await getContent(params.subject, params.post);
         return (
-            <div className={`${postPage} mt-32 flex-1 flex flex-col items-center`}>
+            <div className={`${postPage} mt-32 flex-1 flex flex-col items-center overflow-x-hidden`}>
                 <div className={`${post} markdown-body`}>
                     {content}
                 </div>
