@@ -2,7 +2,7 @@
 title: "Docker 없이 Container 만들기 (1)"
 description: "Docker container 와 Host 의 차이점 설명"
 date: "2026-07-01"
-keywords: "Docker"
+keywords: "Docker, Linux"
 ---
 
 ## Intro
@@ -64,7 +64,7 @@ tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs            96M   12K   96M   1% /run/user/1001
 ```
 
-rootFileSystem 이 다르단 부분은 굉장히 어마어마한 부분인데, 향후 다루게 됨
+Linux 는 모든게 File 이란 말이 있듯, rootFileSystem 이 다르단 부분은 사실상 모든게 다르단 것과 동일한 의미를 가짐, 향후 이게 무엇을 의미하는지 다루어볼 예정
 
 ### Process 비교
 ```bash
